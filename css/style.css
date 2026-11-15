@@ -89,7 +89,6 @@ svg { display: block; }
 
 .icon,
 .contact__icon svg,
-.highlight__icon svg,
 .social svg,
 .theme-toggle svg {
   width: 1.15em;
@@ -315,40 +314,6 @@ html[data-theme="light"] .cover {
   to { background-position: 260px 0; }
 }
 
-.cover__badge {
-  position: absolute;
-  top: 16px;
-  left: 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 12px 5px 9px;
-  font-size: 12px;
-  font-weight: 550;
-  letter-spacing: .01em;
-  color: #fff;
-  border-radius: 999px;
-  background: rgba(12, 8, 26, .34);
-  border: 1px solid rgba(255, 255, 255, .26);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.dot {
-  position: relative;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 0 0 rgba(74, 222, 128, .6);
-  animation: pulse 2.4s ease-out infinite;
-}
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, .65); }
-  70% { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
-}
-
 .cover__monogram {
   position: absolute;
   right: -6px;
@@ -484,7 +449,7 @@ html[data-theme="light"] .cover {
 /* ---------- Статистика ---------- */
 .stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin-top: 18px;
   padding: 12px 6px;
@@ -642,65 +607,17 @@ html[data-theme="light"] .cover {
 }
 
 .bio {
-  font-size: 14px;
-  line-height: 1.68;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--text-soft);
   text-wrap: pretty;
 }
 .bio strong { color: var(--text); font-weight: 600; }
 
-/* ---------- Плюсы ---------- */
-.highlights {
-  display: grid;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.highlight {
-  display: flex;
-  gap: 11px;
-  align-items: flex-start;
-  padding: 11px 13px;
-  border-radius: var(--radius-md);
-  background: var(--surface-2);
-  border: 1px solid transparent;
-  transition: background-color .25s, border-color .25s, transform .25s var(--ease-out);
-}
-.highlight:hover {
-  background: var(--surface-3);
-  border-color: var(--border);
-  transform: translateX(3px);
-}
-
-.highlight__icon {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  flex: none;
-  border-radius: 9px;
-  color: var(--brand-2);
-  background: linear-gradient(140deg, rgba(139, 92, 246, .22), rgba(34, 211, 238, .16));
-  border: 1px solid var(--border);
-}
-.highlight__icon svg { width: 17px; height: 17px; }
-
-.highlight h2 {
-  font-size: 13.2px;
-  font-weight: 650;
-  letter-spacing: -.005em;
-}
-.highlight p {
-  font-size: 12.4px;
-  line-height: 1.5;
-  color: var(--text-dim);
-  margin-top: 1px;
-}
-
 /* ---------- Навыки ---------- */
 .skills {
   display: grid;
-  gap: 11px;
+  gap: 9px;
 }
 
 .skill__head {
@@ -712,12 +629,6 @@ html[data-theme="light"] .cover {
   font-size: 12.8px;
   font-weight: 550;
   color: var(--text-soft);
-}
-
-.skill__num {
-  font-size: 11.5px;
-  font-variant-numeric: tabular-nums;
-  color: var(--text-dim);
 }
 
 .skill__bar {
@@ -978,7 +889,7 @@ html[data-theme="light"] .cover {
     -webkit-text-fill-color: currentColor;
     color: #000;
   }
-  .contact__label, .highlight p { color: #444; }
+  .contact__label { color: #444; }
 
   .cover, .cover__mesh { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
@@ -997,7 +908,7 @@ html[data-theme="light"] .cover {
 
 /* Ховер-эффекты только там, где есть настоящий курсор */
 @media (hover: none) {
-  .highlight:hover, .contact:hover { transform: none; }
+  .contact:hover { transform: none; }
   .social:hover, .chips li:hover, .btn:hover { transform: none; }
 }
 
@@ -1007,7 +918,7 @@ html[data-theme="light"] .cover {
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .card { background: var(--surface-solid); }
-  .theme-toggle, .cover__badge { background: var(--surface-solid); }
+  .theme-toggle { background: var(--surface-solid); }
 }
 
 /* Компактнее на невысоких экранах ноутбуков */
@@ -1019,8 +930,6 @@ html[data-theme="light"] .cover {
   .actions { margin-top: 12px; }
   .tabs { margin-top: 18px; }
   .panels { margin-top: 12px; }
-  .highlights { gap: 6px; margin-top: 10px; }
-  .highlight { padding: 9px 12px; }
   .skills { gap: 9px; }
   .chips { margin-top: 12px; }
   .socials { margin-top: 12px; }
@@ -1060,12 +969,6 @@ html[data-idle="true"] .cover__lines {
   .tab { padding: 7px 4px; font-size: 12.2px; }
   .panels { margin-top: 12px; }
   .bio { font-size: 13.2px; line-height: 1.6; }
-  .highlights { gap: 6px; margin-top: 10px; }
-  .highlight { padding: 9px 11px; gap: 9px; }
-  .highlight__icon { width: 28px; height: 28px; border-radius: 8px; }
-  .highlight__icon svg { width: 15px; height: 15px; }
-  .highlight h2 { font-size: 12.6px; }
-  .highlight p { font-size: 11.6px; line-height: 1.45; }
   .skills { gap: 9px; }
   .skill__head { font-size: 12.2px; margin-bottom: 5px; }
   .chips { margin-top: 12px; gap: 5px; }

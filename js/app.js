@@ -1,6 +1,6 @@
 /* ==========================================================================
    Карточка-био · app.js
-   Тема, вкладки, эффект печатной машинки, копирование, vCard, счётчики.
+   Тема, вкладки, печатная машинка, копирование, счётчики, шаринг.
    Ванильный JS, без зависимостей. Всё в IIFE, чтобы не засорять глобальную область.
    ========================================================================== */
 (() => {
@@ -55,7 +55,7 @@
     'Frontend-разработчик',
     'UI-инженер',
     'Любитель чистого кода',
-    'Хабаровск → весь мир'
+    'Разбираюсь в железе и нейросетях'
   ];
 
   const twEl = $('#typewriter');
@@ -226,87 +226,13 @@
   });
 
   /* ---------------------------------------------------------------------
-     6. Скачивание vCard
-     --------------------------------------------------------------------- */
-  const profile = {
-    firstName: 'Алексей',
-    lastName: 'Соколов',
-    role: 'Frontend-разработчик, UI-инженер',
-    email: 'alexey@sokolov.dev',
-    phone: '+79145550123',
-    telegram: 'alexey_sokolov',
-    github: 'alexey-sokolov',
-    city: 'Хабаровск',
-    country: 'Россия'
-  };
-
-  const buildVCard = () => {
-    const lines = [
-      'BEGIN:VCARD',
-      'VERSION:3.0',
-      `N:${profile.lastName};${profile.firstName};;;`,
-      `FN:${profile.firstName} ${profile.lastName}`,
-      `TITLE:${profile.role}`,
-      `EMAIL;TYPE=INTERNET,PREF:${profile.email}`,
-      `TEL;TYPE=CELL,VOICE:${profile.phone}`,
-      `URL:https://t.me/${profile.telegram}`,
-      `URL:https://github.com/${profile.github}`,
-      `ADR;TYPE=HOME:;;;${profile.city};;;${profile.country}`,
-      'X-TELEGRAM:alexey_sokolov',
-      `REV:${new Date().toISOString().replace(/\.\d{3}/, '')}`,
-      'END:VCARD'
-    ];
-    // По RFC 6350 строки должны разделяться CRLF
-    return lines.join('\r\n');
-  };
-
-  const VCF_NAME = 'alexey-sokolov.vcf';
-  const vcardBtn = $('#vcardBtn');
-
-  const downloadVCard = () => {
-    const data = buildVCard();
-
-    // Основной путь: Blob + object URL
-    if (typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function') {
-      const blob = new Blob([data], { type: 'text/vcard;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-
-      a.href = url;
-      a.download = VCF_NAME;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-      toast('vCard скачана — откройте файл, чтобы добавить контакт');
-      return;
-    }
-
-    // Запасной путь: data URI
-    try {
-      const a = document.createElement('a');
-      a.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(data);
-      a.download = VCF_NAME;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      toast('vCard скачана — откройте файл, чтобы добавить контакт');
-    } catch (e) {
-      toast('Браузер не даёт скачать файл — скопируйте контакты вручную');
-    }
-  };
-
-  vcardBtn?.addEventListener('click', downloadVCard);
-
-  /* ---------------------------------------------------------------------
-     7. «Поделиться»
+     6. «Поделиться»
      --------------------------------------------------------------------- */
   const shareBtn = $('#shareBtn');
   shareBtn?.addEventListener('click', async () => {
     const shareData = {
-      title: 'Алексей Соколов — Frontend-разработчик',
-      text: 'Карточка-био: навыки, контакты и vCard.',
+      title: 'Qcoldu — карточка-био',
+      text: 'Карточка-био: навыки, контакты и проекты.',
       url: window.location.href
     };
 
@@ -324,22 +250,22 @@
   });
 
   /* ---------------------------------------------------------------------
-     8. Анимированные счётчики
+     7. Анимированные счётчики
      --------------------------------------------------------------------- */
   const counters = $$('[data-count-to]');
 
-  // Сбрасываем значения до анимации, чтобы не мигали итоговые цифры
-  if (!reduceMotion.matches) {
-    counters.forEach((el) => { el.textContent = '0'; });
-  }
+  // Формат числа: 1.5 -> «1,5», 5 -> «5»
+  const formatStat = (value, el) => {
+    const decimals = Number(el.dataset.decimals) || 0;
+    return value.toFixed(decimals).replace('.', ',') + (el.dataset.suffix || '');
+  };
 
   const animateCount = (el) => {
     const target = Number(el.dataset.countTo) || 0;
-    const suffix = el.dataset.suffix || '';
     const duration = 1300;
 
     if (reduceMotion.matches) {
-      el.textContent = target + suffix;
+      el.textContent = formatStat(target, el);
       return;
     }
 
@@ -347,11 +273,18 @@
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased) + suffix;
+      const precision = Number(el.dataset.decimals) ? 1 : 0;
+      const value = precision ? target * eased : Math.round(target * eased);
+      el.textContent = formatStat(value, el);
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   };
+
+  // Сбрасываем значения до старта анимации, чтобы не мигали итоговые цифры
+  if (!reduceMotion.matches) {
+    counters.forEach((el) => { el.textContent = formatStat(0, el); });
+  }
 
   if ('IntersectionObserver' in window && counters.length) {
     const io = new IntersectionObserver((entries, observer) => {
@@ -365,7 +298,7 @@
     counters.forEach((el) => io.observe(el));
   } else {
     counters.forEach((el) => {
-      el.textContent = Number(el.dataset.countTo) + (el.dataset.suffix || '');
+      el.textContent = formatStat(Number(el.dataset.countTo), el);
     });
   }
 
@@ -373,13 +306,13 @@
   setTimeout(() => {
     counters.forEach((el) => {
       if (el.textContent === '0') {
-        el.textContent = Number(el.dataset.countTo) + (el.dataset.suffix || '');
+        el.textContent = formatStat(Number(el.dataset.countTo), el);
       }
     });
   }, 2500);
 
   /* ---------------------------------------------------------------------
-     9. Местное время (Хабаровск, UTC+10)
+     8. Местное время (Хабаровск, UTC+10)
      --------------------------------------------------------------------- */
   const clockEl = $('#localClock');
   const timeFmt = new Intl.DateTimeFormat('ru-RU', {
@@ -401,7 +334,7 @@
   setInterval(tickClock, 15000);
 
   /* ---------------------------------------------------------------------
-     10. Свечение, следующее за курсором, и лёгкий наклон карточки
+     9. Свечение, следующее за курсором, и лёгкий наклон карточки
      --------------------------------------------------------------------- */
   const card = $('#card');
 
@@ -431,14 +364,14 @@
   }
 
   /* ---------------------------------------------------------------------
-     11. Пауза фоновых анимаций, пока вкладка неактивна
+     10. Пауза фоновых анимаций, пока вкладка неактивна
      --------------------------------------------------------------------- */
   document.addEventListener('visibilitychange', () => {
     root.dataset.idle = document.hidden ? 'true' : 'false';
   });
 
   /* ---------------------------------------------------------------------
-     12. Год в подвале и запасной вариант для аватара
+     11. Год в подвале и запасной вариант для аватара
      --------------------------------------------------------------------- */
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
@@ -451,13 +384,13 @@
     const fallback = document.createElement('div');
     fallback.className = 'avatar avatar--fallback';
     fallback.setAttribute('role', 'img');
-    fallback.setAttribute('aria-label', 'Алексей Соколов');
-    fallback.textContent = 'АС';
+    fallback.setAttribute('aria-label', 'Qcoldu');
+    fallback.textContent = 'Qc';
     avatar.replaceWith(fallback);
   });
 
   /* ---------------------------------------------------------------------
-     13. Пасхалка: нажмите «С» — конфетти из точек
+     12. Пасхалка: нажмите «С» — конфетти из точек
      (не мешает работе, отключается при reduced-motion)
      --------------------------------------------------------------------- */
   const burst = (x, y) => {

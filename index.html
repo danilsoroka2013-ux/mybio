@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Алексей Соколов — карточка-био</title>
-  <meta name="description" content="Персональная карточка-визитка Алексея Соколова: frontend-разработчик, UI-инженер. Навыки, контакты, скачивание vCard." />
-  <meta name="author" content="Алексей Соколов" />
+  <title>Qcoldu — карточка-био</title>
+  <meta name="description" content="Карточка-био Qcoldu: frontend-разработчик, 5 успешных проектов, технологии, железо и нейросети." />
+  <meta name="author" content="Qcoldu" />
   <meta name="theme-color" content="#07070d" />
 
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Алексей Соколов — Frontend-разработчик" />
-  <meta property="og:description" content="Собираю быстрые, доступные и живые интерфейсы. Карточка-био с контактами и vCard." />
+  <meta property="og:title" content="Qcoldu — карточка-био" />
+  <meta property="og:description" content="5 полных успешных проектов. Хорошо знаю технологии, разбираюсь в железе и коде, знаю толк в нейросетях." />
   <meta property="og:image" content="assets/avatar.jpg" />
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -62,11 +62,7 @@
       <div class="cover">
         <div class="cover__mesh" aria-hidden="true"></div>
         <div class="cover__lines" aria-hidden="true"></div>
-        <div class="cover__badge">
-          <span class="dot"></span>
-          Открыт к проектам
-        </div>
-        <div class="cover__monogram" aria-hidden="true">АС</div>
+        <div class="cover__monogram" aria-hidden="true">Qc</div>
       </div>
 
       <div class="content">
@@ -75,13 +71,13 @@
             <span class="avatar-wrap__ring" aria-hidden="true"></span>
             <span class="avatar-wrap__glow" aria-hidden="true"></span>
             <img class="avatar" src="assets/avatar.jpg" width="512" height="512"
-                 alt="Аватар Алексея Соколова" id="avatar" />
+                 alt="Аватар Qcoldu" id="avatar" />
             <span class="avatar__status" title="На связи" aria-label="Статус: в сети"></span>
           </div>
 
-          <h1 class="profile__name" id="profileName">Алексей Соколов</h1>
+          <h1 class="profile__name" id="profileName">Qcoldu</h1>
 
-          <p class="profile__role" aria-label="Frontend-разработчик и UI-инженер">
+          <p class="profile__role" aria-label="Frontend-разработчик, разбирается в железе и нейросетях">
             <span class="typewriter" id="typewriter">Frontend-разработчик</span><span class="typewriter__caret" aria-hidden="true"></span>
           </p>
 
@@ -95,30 +91,23 @@
 
           <ul class="stats" aria-label="Кратко о профессиональном опыте">
             <li class="stat">
-              <span class="stat__value" data-count-to="7" data-suffix="">7</span>
-              <span class="stat__label">лет опыта</span>
+              <span class="stat__value" data-count-to="1.5" data-decimals="1">1,5</span>
+              <span class="stat__label">года опыта</span>
             </li>
             <li class="stat">
-              <span class="stat__value" data-count-to="60" data-suffix="+">60+</span>
+              <span class="stat__value" data-count-to="5" data-suffix="">5</span>
               <span class="stat__label">проектов</span>
-            </li>
-            <li class="stat">
-              <span class="stat__value" data-count-to="12" data-suffix="">12</span>
-              <span class="stat__label">open-source</span>
             </li>
           </ul>
 
           <div class="actions">
-            <a class="btn btn--primary" href="mailto:alexey@sokolov.dev?subject=Привет%2C%20Алексей!">
-              <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m3.8 7 8.2 6 8.2-6"/></svg>
+            <a class="btn btn--primary" href="https://t.me/Qcoldu" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M20.5 4.3 2.9 11c-.8.3-.8 1.1 0 1.4l4.3 1.4 1.6 5c.2.7.7.8 1.2.3l2.3-2.2 4.3 3.2c.6.4 1.1.2 1.3-.6l3.1-13.8c.2-.9-.3-1.3-.5-1.4Z"/><path d="m7.2 13.8 10.6-6.6-7.9 7.4"/></svg>
               Написать
             </a>
-            <button class="btn" type="button" id="vcardBtn">
-              <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M12 3.5v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 17v1.6A1.9 1.9 0 0 0 5.9 20.5h12.2a1.9 1.9 0 0 0 1.9-1.9V17"/></svg>
-              Скачать vCard
-            </button>
-            <button class="btn btn--icon" type="button" id="shareBtn" aria-label="Поделиться карточкой" title="Поделиться">
+            <button class="btn" type="button" id="shareBtn">
               <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><circle cx="17.5" cy="6" r="2.8"/><circle cx="6.5" cy="12" r="2.8"/><circle cx="17.5" cy="18" r="2.8"/><path d="m9 10.6 6-3.2M9 13.4l6 3.2"/></svg>
+              Поделиться
             </button>
           </div>
         </header>
@@ -138,74 +127,46 @@
           <!-- Обо мне -->
           <section class="panel is-active" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
             <p class="bio">
-              Проектирую и собираю интерфейсы на чистом вебе — от прототипа в Figma до продакшена.
-              Люблю аккуратные анимации, доступность и код, который приятно читать.
-              Семь лет превращаю макеты в быстрые и живые страницы.
+              Вайбер, 5 полных успешных проектов, хорошо знаю технологии,
+              разбираюсь в железе и коде и знаю толк в нейросетях.
             </p>
-
-            <ul class="highlights">
-              <li class="highlight">
-                <span class="highlight__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M13 2.5 4.5 13.5H12l-1 8L19.5 10H12l1-7.5Z"/></svg>
-                </span>
-                <div>
-                  <h2>Быстро</h2>
-                  <p>LCP ниже 1.5 c, 100/100 в Lighthouse, ленивая загрузка всего лишнего.</p>
-                </div>
-              </li>
-              <li class="highlight">
-                <span class="highlight__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M9.2 9.3h4a2.1 2.1 0 0 1 0 4.2h-2.4a2.1 2.1 0 0 0 0 4.2h4"/></svg>
-                </span>
-                <div>
-                  <h2>Доступно</h2>
-                  <p>Клавиатура, скринридеры, контраст и честная семантика — по умолчанию.</p>
-                </div>
-              </li>
-              <li class="highlight">
-                <span class="highlight__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M4 19V9.5M10 19V5M16 19v-6M22 19H2"/></svg>
-                </span>
-                <div>
-                  <h2>С фокусом на продукт</h2>
-                  <p>Не просто «сделать красиво», а решить задачу и улучшить метрики.</p>
-                </div>
-              </li>
-            </ul>
           </section>
 
           <!-- Навыки -->
           <section class="panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills">
             <ul class="skills">
-              <li class="skill" style="--level: 96%">
-                <div class="skill__head"><span>HTML5 / семантика</span><span class="skill__num">96%</span></div>
-                <div class="skill__bar"><span class="skill__fill"></span></div>
-              </li>
-              <li class="skill" style="--level: 94%">
-                <div class="skill__head"><span>CSS3, SCSS, анимации</span><span class="skill__num">94%</span></div>
-                <div class="skill__bar"><span class="skill__fill"></span></div>
-              </li>
               <li class="skill" style="--level: 92%">
-                <div class="skill__head"><span>JavaScript (ES2023)</span><span class="skill__num">92%</span></div>
+                <div class="skill__head"><span>HTML5 / вёрстка</span></div>
                 <div class="skill__bar"><span class="skill__fill"></span></div>
               </li>
-              <li class="skill" style="--level: 86%">
-                <div class="skill__head"><span>TypeScript</span><span class="skill__num">86%</span></div>
+              <li class="skill" style="--level: 90%">
+                <div class="skill__head"><span>CSS3, адаптив, анимации</span></div>
                 <div class="skill__bar"><span class="skill__fill"></span></div>
               </li>
               <li class="skill" style="--level: 88%">
-                <div class="skill__head"><span>Vue 3 / Nuxt</span><span class="skill__num">88%</span></div>
+                <div class="skill__head"><span>JavaScript</span></div>
                 <div class="skill__bar"><span class="skill__fill"></span></div>
               </li>
-              <li class="skill" style="--level: 74%">
-                <div class="skill__head"><span>Node.js / API</span><span class="skill__num">74%</span></div>
+              <li class="skill" style="--level: 82%">
+                <div class="skill__head"><span>TypeScript</span></div>
+                <div class="skill__bar"><span class="skill__fill"></span></div>
+              </li>
+              <li class="skill" style="--level: 80%">
+                <div class="skill__head"><span>Vue 3 / Nuxt</span></div>
+                <div class="skill__bar"><span class="skill__fill"></span></div>
+              </li>
+              <li class="skill" style="--level: 78%">
+                <div class="skill__head"><span>Железо: сборка и диагностика</span></div>
+                <div class="skill__bar"><span class="skill__fill"></span></div>
+              </li>
+              <li class="skill" style="--level: 76%">
+                <div class="skill__head"><span>Нейросети и промпты</span></div>
                 <div class="skill__bar"><span class="skill__fill"></span></div>
               </li>
             </ul>
 
             <ul class="chips" aria-label="Инструменты и технологии">
-              <li>Figma</li><li>Vite</li><li>Git</li><li>Vitest</li>
-              <li>Tailwind</li><li>GSAP</li><li>Storybook</li><li>Web Components</li>
+              <li>Git</li><li>Vite</li><li>Figma</li><li>Node.js</li><li>Tailwind</li>
             </ul>
           </section>
 
@@ -214,25 +175,13 @@
             <ul class="contacts">
               <li class="contact">
                 <span class="contact__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m3.8 7 8.2 6 8.2-6"/></svg>
-                </span>
-                <span class="contact__body">
-                  <span class="contact__label">Email</span>
-                  <a class="contact__value" href="mailto:alexey@sokolov.dev">alexey@sokolov.dev</a>
-                </span>
-                <button class="copy" type="button" data-copy="alexey@sokolov.dev" aria-label="Скопировать email">
-                  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.4"/><path d="M15.5 5.5v-.6a1.9 1.9 0 0 0-1.9-1.9H5.4a1.9 1.9 0 0 0-1.9 1.9v8.2a1.9 1.9 0 0 0 1.9 1.9h.6"/></svg>
-                </button>
-              </li>
-              <li class="contact">
-                <span class="contact__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M20.5 4.3 2.9 11c-.8.3-.8 1.1 0 1.4l4.3 1.4 1.6 5c.2.7.7.8 1.2.3l2.3-2.2 4.3 3.2c.6.4 1.1.2 1.3-.6l3.1-13.8c.2-.9-.3-1.3-.5-1.4Z"/><path d="m7.2 13.8 10.6-6.6-7.9 7.4"/></svg>
                 </span>
                 <span class="contact__body">
                   <span class="contact__label">Telegram</span>
-                  <a class="contact__value" href="https://t.me/alexey_sokolov" target="_blank" rel="noopener noreferrer">@alexey_sokolov</a>
+                  <a class="contact__value" href="https://t.me/Qcoldu" target="_blank" rel="noopener noreferrer">@Qcoldu</a>
                 </span>
-                <button class="copy" type="button" data-copy="@alexey_sokolov" aria-label="Скопировать ник в Telegram">
+                <button class="copy" type="button" data-copy="@Qcoldu" aria-label="Скопировать ник в Telegram">
                   <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.4"/><path d="M15.5 5.5v-.6a1.9 1.9 0 0 0-1.9-1.9H5.4a1.9 1.9 0 0 0-1.9 1.9v8.2a1.9 1.9 0 0 0 1.9 1.9h.6"/></svg>
                 </button>
               </li>
@@ -242,44 +191,27 @@
                 </span>
                 <span class="contact__body">
                   <span class="contact__label">GitHub</span>
-                  <a class="contact__value" href="https://github.com/alexey-sokolov" target="_blank" rel="noopener noreferrer">github.com/alexey-sokolov</a>
+                  <a class="contact__value" href="https://github.com/danilsoroka2013-ux" target="_blank" rel="noopener noreferrer">github.com/danilsoroka2013-ux</a>
                 </span>
-                <button class="copy" type="button" data-copy="https://github.com/alexey-sokolov" aria-label="Скопировать ссылку на GitHub">
-                  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.4"/><path d="M15.5 5.5v-.6a1.9 1.9 0 0 0-1.9-1.9H5.4a1.9 1.9 0 0 0-1.9 1.9v8.2a1.9 1.9 0 0 0 1.9 1.9h.6"/></svg>
-                </button>
-              </li>
-              <li class="contact">
-                <span class="contact__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M7.2 3.5h3l1.6 4.3-2 1.4a11.4 11.4 0 0 0 4.9 4.9l1.4-2 4.4 1.6v3a2 2 0 0 1-2.2 2A16.9 16.9 0 0 1 5.2 5.7a2 2 0 0 1 2-2.2Z"/></svg>
-                </span>
-                <span class="contact__body">
-                  <span class="contact__label">Телефон</span>
-                  <a class="contact__value" href="tel:+79145550123">+7 914 555-01-23</a>
-                </span>
-                <button class="copy" type="button" data-copy="+79145550123" aria-label="Скопировать номер телефона">
+                <button class="copy" type="button" data-copy="https://github.com/danilsoroka2013-ux" aria-label="Скопировать ссылку на GitHub">
                   <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2.4"/><path d="M15.5 5.5v-.6a1.9 1.9 0 0 0-1.9-1.9H5.4a1.9 1.9 0 0 0-1.9 1.9v8.2a1.9 1.9 0 0 0 1.9 1.9h.6"/></svg>
                 </button>
               </li>
             </ul>
 
             <div class="socials" aria-label="Социальные сети">
-              <a class="social" href="https://t.me/alexey_sokolov" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+              <a class="social" href="https://t.me/Qcoldu" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
                 <svg viewBox="0 0 24 24"><path d="M20.5 4.3 2.9 11c-.8.3-.8 1.1 0 1.4l4.3 1.4 1.6 5c.2.7.7.8 1.2.3l2.3-2.2 4.3 3.2c.6.4 1.1.2 1.3-.6l3.1-13.8c.2-.9-.3-1.3-.5-1.4Z"/><path d="m7.2 13.8 10.6-6.6-7.9 7.4"/></svg>
               </a>
-              <a class="social" href="https://github.com/alexey-sokolov" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a class="social" href="https://github.com/danilsoroka2013-ux" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" class="icon--fill"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10Z"/></svg>
-              </a>
-              <a class="social" href="mailto:alexey@sokolov.dev" aria-label="Email">
-                <svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m3.8 7 8.2 6 8.2-6"/></svg>
               </a>
             </div>
           </section>
         </div>
 
         <footer class="card__footer">
-          <span>© <span id="year">2026</span> Алексей Соколов</span>
-          <span class="card__footer-sep" aria-hidden="true">·</span>
-          <span>HTML5 · CSS · JS, без зависимостей</span>
+          <span>© <span id="year">2026</span> Qcoldu</span>
         </footer>
       </div>
     </article>
@@ -293,7 +225,7 @@
       .panels { display: block; }
       .panel:not(.is-active) { opacity: 1; visibility: visible; }
       .panel + .panel { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
-      .tabs, .copy, #vcardBtn, #shareBtn, .typewriter__caret { display: none !important; }
+      .tabs, .copy, #shareBtn, .typewriter__caret { display: none !important; }
       .skill__fill { width: var(--level); }
     </style>
   </noscript>

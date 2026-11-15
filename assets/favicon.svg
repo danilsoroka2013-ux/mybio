@@ -7,6 +7,6 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="16" fill="url(#g)"/>
-  <text x="32" y="43" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700"
-        fill="#ffffff" text-anchor="middle" letter-spacing="-1">АС</text>
+  <text x="32" y="43" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700"
+        fill="#ffffff" text-anchor="middle" letter-spacing="-1.5">Qc</text>
 </svg>
